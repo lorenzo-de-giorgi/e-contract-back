@@ -19,6 +19,9 @@ gem "jbuilder"
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
+gem 'bcrypt', '~> 3.1.7'
+gem 'jwt'
+
 gem 'bundler', '>= 2.0'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
