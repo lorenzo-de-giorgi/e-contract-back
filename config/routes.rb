@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  namespace :api do
-    namespace :v1 do
-      resources  :users, defaults: {format: :json} do
-        post 'creation', to:'users#create'
-      end
-    end
-  end
+  
+  # Endpoint per registrazione (http://localhost:3000/api/v1/register)
+  post '/api/v1/register', to: 'users#create'
+  
+  resources :users
+  post '/auth/login', to: 'authentication#login'
+
 end

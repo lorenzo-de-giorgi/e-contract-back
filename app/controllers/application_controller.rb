@@ -1,18 +1,22 @@
 class ApplicationController < ActionController::API
-  def decode_token(token)
-    body = JWT.decode(token, Rails.application.secrets.secret_key_base)[0]
-    user_id = body['user_id']
-    User.find(user_id)
-  rescue StandardError
-    nil
-  end
 
-  def logged_in_user
-    token = request.headers['Authorization'].split(' ').last
-    @current_user = decode_token(token)
-  end
+  include JwtToken
 
-  def authenticate_user
-    render json: { message: 'Please log in' }, status: :unauthorized unless logged_in_user
-  end
+  before_action :authenticate_user
+
+  private
+
+    def authenticate_user
+        header = request.headers['Authorization']
+        header = header.split(' ').last if header
+        begin
+          @decoded = JwtToken.jwt_decode(header)
+          @current_user = User.find(@decoded[:user_id])
+        rescue ActiveRecord::RecordNotFound => e
+          render json: {errors: e.message }, status: :unauthorized
+        rescue JWT::DecodeError => e
+          render json: { errors: e.message }, status: :unauthorized
+        end
+    end
+
 end

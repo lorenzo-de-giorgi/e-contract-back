@@ -3406,3 +3406,491 @@ Started POST "/api/v1/users/creation" for ::1 at 2024-10-23 15:40:55 +0200
   
 ActionController::RoutingError (No route matches [POST] "/api/v1/users/creation"):
   
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8173985185377000150)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (4.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8173985185377000150)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/users" for ::1 at 2024-10-24 09:47:29 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+NoMethodError (undefined method `secrets' for an instance of EContractBack::Application):
+  
+app/controllers/concerns/jwt_token.rb:5:in `<module:JwtToken>'
+app/controllers/concerns/jwt_token.rb:3:in `<main>'
+app/controllers/application_controller.rb:3:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/users_controller.rb:1:in `<main>'
+Started POST "/users" for ::1 at 2024-10-24 09:49:29 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+NoMethodError (undefined method `secrets' for an instance of EContractBack::Application):
+  
+app/controllers/concerns/jwt_token.rb:5:in `<module:JwtToken>'
+app/controllers/concerns/jwt_token.rb:3:in `<main>'
+app/controllers/application_controller.rb:3:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/users_controller.rb:1:in `<main>'
+Started POST "/users" for ::1 at 2024-10-24 09:51:53 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"Lorenzo", "surname"=>"De Giorgi", "email"=>"[FILTERED]", "password"=>"[FILTERED]", "date_of_birth"=>"15-12-2004", "user"=>{"email"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :name, :surname, :date_of_birth, :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x000000012129e100>, params: {"name"=>"Lorenzo", "surname"=>"De Giorgi", "email"=>"[FILTERED]", "password"=>"[FILTERED]", "date_of_birth"=>"15-12-2004", "controller"=>"users", "action"=>"create", "user"=>{"email"=>"[FILTERED]"}} }[0m
+Completed 500 Internal Server Error in 232ms (ActiveRecord: 47.7ms (0 queries, 0 cached) | GC: 0.4ms)
+
+
+  
+NoMethodError (undefined method `save' for nil):
+  
+app/controllers/users_controller.rb:16:in `create'
+Started POST "/users" for ::1 at 2024-10-24 09:52:34 +0200
+Processing by UsersController#create as */*
+  Parameters: {"email"=>"[FILTERED]", "password"=>"[FILTERED]", "user"=>{"email"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00000001252553c0>, params: {"email"=>"[FILTERED]", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"email"=>"[FILTERED]"}} }[0m
+Completed 500 Internal Server Error in 237ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+NoMethodError (undefined method `save' for nil):
+  
+app/controllers/users_controller.rb:16:in `create'
+Started POST "/users" for ::1 at 2024-10-24 09:54:41 +0200
+Processing by UsersController#create as */*
+  Parameters: {"user_name"=>"degio", "email"=>"[FILTERED]", "password"=>"[FILTERED]", "user"=>{"email"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00000001250da8d8>, params: {"user_name"=>"degio", "email"=>"[FILTERED]", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"email"=>"[FILTERED]"}} }[0m
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 7.2ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'user_name' for User.):
+
+Causes:
+NoMethodError (undefined method `user_name=' for an instance of User)
+  
+app/controllers/users_controller.rb:15:in `create'
+Started POST "/users" for ::1 at 2024-10-24 09:55:38 +0200
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x0000000125078fc0>, params: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "controller"=>"users", "action"=>"create"} }[0m
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+NoMethodError (undefined method `save' for nil):
+  
+app/controllers/users_controller.rb:16:in `create'
+Started POST "/users" for ::1 at 2024-10-24 09:55:52 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x000000010bbf75a0>, params: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "controller"=>"users", "action"=>"create"} }[0m
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 14.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+NoMethodError (undefined method `save' for nil):
+  
+app/controllers/users_controller.rb:16:in `create'
+Started POST "/users" for ::1 at 2024-10-24 09:57:01 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x000000013b9f78b0>, params: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "controller"=>"users", "action"=>"create"} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (2.35ms)
+Completed 500 Internal Server Error in 44ms (Views: 4.9ms | ActiveRecord: 17.9ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...); return".):
+  
+app/controllers/users_controller.rb:21:in `create'
+Started POST "/users" for ::1 at 2024-10-24 09:57:14 +0200
+Processing by UsersController#create as */*
+  Parameters: {"email"=>"[FILTERED]", "password"=>"[FILTERED]", "user"=>{"email"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x000000014a2d0640>, params: {"email"=>"[FILTERED]", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"email"=>"[FILTERED]"}} }[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (8.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "[FILTERED]"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-24 07:57:14.718192"], ["updated_at", "2024-10-24 07:57:14.718192"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (1.08ms)
+Completed 500 Internal Server Error in 264ms (Views: 2.3ms | ActiveRecord: 10.8ms (1 query, 0 cached) | GC: 0.4ms)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...); return".):
+  
+app/controllers/users_controller.rb:21:in `create'
+Started POST "/users" for ::1 at 2024-10-24 09:57:27 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x000000012db77770>, params: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "controller"=>"users", "action"=>"create"} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (2.39ms)
+Completed 500 Internal Server Error in 37ms (Views: 4.5ms | ActiveRecord: 13.3ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...); return".):
+  
+app/controllers/users_controller.rb:21:in `create'
+Started POST "/users" for ::1 at 2024-10-24 09:59:38 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (2.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "[FILTERED]"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-24 07:59:38.898222"], ["updated_at", "2024-10-24 07:59:38.898222"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+Redirected to http://localhost:3000/users/2
+Completed 500 Internal Server Error in 264ms (ActiveRecord: 22.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...); return".):
+  
+app/controllers/users_controller.rb:21:in `create'
+Started POST "/users" for ::1 at 2024-10-24 10:01:47 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (4.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "[FILTERED]"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-24 08:01:47.499051"], ["updated_at", "2024-10-24 08:01:47.499051"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 269ms (ActiveRecord: 22.7ms (1 query, 0 cached) | GC: 9.9ms)
+
+
+Started GET "/users/3" for ::1 at 2024-10-24 10:01:47 +0200
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"3"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.7ms)
+
+
+  
+NoMethodError (undefined method `decode' for module JwtToken):
+  
+app/controllers/application_controller.rb:13:in `authenticate_user'
+Started POST "/users" for ::1 at 2024-10-24 10:03:29 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (3.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "[FILTERED]"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-24 08:03:30.131499"], ["updated_at", "2024-10-24 08:03:30.131499"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+Redirected to http://localhost:3000/users/4
+Completed 302 Found in 260ms (ActiveRecord: 21.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/4" for ::1 at 2024-10-24 10:03:30 +0200
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"4"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2024-10-24 10:06:59 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (16.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (2.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "[FILTERED]"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-24 08:07:00.309794"], ["updated_at", "2024-10-24 08:07:00.309794"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+Redirected to http://localhost:3000/users/5
+Completed 302 Found in 277ms (ActiveRecord: 35.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/5" for ::1 at 2024-10-24 10:07:00 +0200
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"5"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2024-10-24 10:09:19 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (3.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "[FILTERED]"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-24 08:09:19.953918"], ["updated_at", "2024-10-24 08:09:19.953918"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+Redirected to http://localhost:3000/users/6
+Completed 302 Found in 261ms (ActiveRecord: 24.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/6" for ::1 at 2024-10-24 10:09:19 +0200
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"6"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 3ms (Views: 2.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2024-10-24 10:11:58 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (3.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "[FILTERED]"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-24 08:11:58.807135"], ["updated_at", "2024-10-24 08:11:58.807135"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+Completed 200 OK in 291ms (Views: 0.9ms | ActiveRecord: 29.3ms (1 query, 0 cached) | GC: 7.7ms)
+
+
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8173985185377000150)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8173985185377000150)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8173985185377000150)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20241023133709)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.2ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8173985185377000150)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8173985185377000150)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8173985185377000150)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8173985185377000150)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8173985185377000150)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8173985185377000150)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8173985185377000150)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (7731.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "e_contracts"[0m
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8173985185377000150)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-10-24 08:20:48.346456', '2024-10-24 08:20:48.346458') RETURNING "key"[0m
+Migrating to CreateUsers (20241023133709)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "surname" character varying, "username" character varying, "date_of_birth" date, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241023133709') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(8173985185377000150)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/users" for ::1 at 2024-10-24 10:21:10 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (4.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "surname", "username", "date_of_birth", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", nil], ["surname", nil], ["username", nil], ["date_of_birth", nil], ["email", "[FILTERED]"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-24 08:21:10.679867"], ["updated_at", "2024-10-24 08:21:10.679867"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+Completed 200 OK in 281ms (Views: 1.3ms | ActiveRecord: 25.7ms (1 query, 0 cached) | GC: 7.9ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8173985185377000150)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8173985185377000150)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (7.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8173985185377000150)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-10-24 08:24:36.055133', '2024-10-24 08:24:36.055134') RETURNING "key"[0m
+Migrating to CreateUsers (20241023133709)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8173985185377000150)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8173985185377000150)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to CreateUsers (20241023133709)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8173985185377000150)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8173985185377000150)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to CreateUsers (20241023133709)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(8173985185377000150)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8173985185377000150)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to CreateUsers (20241023133709)
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying NOT NULL, "surname" character varying NOT NULL, "username" character varying NOT NULL, "date_of_birth" date NOT NULL, "email" character varying NOT NULL, "password_digest" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_username" ON "users" ("username")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241023133709') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8173985185377000150)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8173985185377000150)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8173985185377000150)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/users" for ::1 at 2024-10-24 10:27:15 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (3.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "surname", "username", "date_of_birth", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", nil], ["surname", nil], ["username", nil], ["date_of_birth", nil], ["email", "[FILTERED]"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-24 08:27:15.422888"], ["updated_at", "2024-10-24 08:27:15.422888"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+Completed 500 Internal Server Error in 275ms (ActiveRecord: 25.3ms (1 query, 0 cached) | GC: 7.6ms)
+
+
+  
+ActiveRecord::NotNullViolation (PG::NotNullViolation: ERROR:  null value in column "name" of relation "users" violates not-null constraint
+DETAIL:  Failing row contains (1, null, null, null, null, your_email@example.com, $2a$12$M/bI9rUyqV0krTGiSxH8TuJMM89FHB1KBPoE9pH7HDvdW87jRLdgm, 2024-10-24 08:27:15.422888, 2024-10-24 08:27:15.422888).
+):
+
+Causes:
+PG::NotNullViolation (ERROR:  null value in column "name" of relation "users" violates not-null constraint
+DETAIL:  Failing row contains (1, null, null, null, null, your_email@example.com, $2a$12$M/bI9rUyqV0krTGiSxH8TuJMM89FHB1KBPoE9pH7HDvdW87jRLdgm, 2024-10-24 08:27:15.422888, 2024-10-24 08:27:15.422888).
+)
+  
+Started POST "/users" for ::1 at 2024-10-24 10:28:22 +0200
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"Lorenzo", "surname"=>"De Giorgi", "date_of_birth"=>"15-12-2004", "email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (2.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "surname", "username", "date_of_birth", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Lorenzo"], ["surname", "De Giorgi"], ["username", nil], ["date_of_birth", "2004-12-15"], ["email", "[FILTERED]"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-24 08:28:22.447482"], ["updated_at", "2024-10-24 08:28:22.447482"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+Completed 500 Internal Server Error in 252ms (ActiveRecord: 3.0ms (1 query, 0 cached) | GC: 2.3ms)
+
+
+  
+ActiveRecord::NotNullViolation (PG::NotNullViolation: ERROR:  null value in column "username" of relation "users" violates not-null constraint
+DETAIL:  Failing row contains (2, Lorenzo, De Giorgi, null, 2004-12-15, lorenzodegiorgi2004@gmail.com, $2a$12$oc67utOSdu4mkulOJyhnV.XbLeAPx.nQQohvrHA5hbOab8G2gKiau, 2024-10-24 08:28:22.447482, 2024-10-24 08:28:22.447482).
+):
+
+Causes:
+PG::NotNullViolation (ERROR:  null value in column "username" of relation "users" violates not-null constraint
+DETAIL:  Failing row contains (2, Lorenzo, De Giorgi, null, 2004-12-15, lorenzodegiorgi2004@gmail.com, $2a$12$oc67utOSdu4mkulOJyhnV.XbLeAPx.nQQohvrHA5hbOab8G2gKiau, 2024-10-24 08:28:22.447482, 2024-10-24 08:28:22.447482).
+)
+  
+Started POST "/users" for ::1 at 2024-10-24 10:28:40 +0200
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"Lorenzo", "username"=>"Degio", "surname"=>"De Giorgi", "date_of_birth"=>"15-12-2004", "email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (5.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "surname", "username", "date_of_birth", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Lorenzo"], ["surname", "De Giorgi"], ["username", "Degio"], ["date_of_birth", "2004-12-15"], ["email", "[FILTERED]"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-24 08:28:40.530341"], ["updated_at", "2024-10-24 08:28:40.530341"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+Completed 200 OK in 252ms (Views: 0.7ms | ActiveRecord: 6.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2024-10-24 10:28:46 +0200
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"Lorenzo", "username"=>"Degio", "surname"=>"De Giorgi", "date_of_birth"=>"15-12-2004", "email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (14.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "surname", "username", "date_of_birth", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Lorenzo"], ["surname", "De Giorgi"], ["username", "Degio"], ["date_of_birth", "2004-12-15"], ["email", "[FILTERED]"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-24 08:28:46.600800"], ["updated_at", "2024-10-24 08:28:46.600800"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+Completed 500 Internal Server Error in 260ms (ActiveRecord: 15.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotUnique (PG::UniqueViolation: ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+DETAIL:  Key (email)=(lorenzodegiorgi2004@gmail.com) already exists.
+):
+
+Causes:
+PG::UniqueViolation (ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+DETAIL:  Key (email)=(lorenzodegiorgi2004@gmail.com) already exists.
+)
+  
+Started POST "/users" for ::1 at 2024-10-24 10:36:10 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"Lorenzo", "username"=>"Degio", "surname"=>"De Giorgi", "date_of_birth"=>"15-12-2004", "email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (4.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "surname", "username", "date_of_birth", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Lorenzo"], ["surname", "De Giorgi"], ["username", "Degio"], ["date_of_birth", "2004-12-15"], ["email", "[FILTERED]"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-24 08:36:10.566999"], ["updated_at", "2024-10-24 08:36:10.566999"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+Completed 500 Internal Server Error in 285ms (ActiveRecord: 23.9ms (1 query, 0 cached) | GC: 7.9ms)
+
+
+  
+ActiveRecord::RecordNotUnique (PG::UniqueViolation: ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+DETAIL:  Key (email)=(lorenzodegiorgi2004@gmail.com) already exists.
+):
+
+Causes:
+PG::UniqueViolation (ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+DETAIL:  Key (email)=(lorenzodegiorgi2004@gmail.com) already exists.
+)
+  
+Started POST "/users" for ::1 at 2024-10-24 10:36:20 +0200
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"Lorenzo", "username"=>"Degio", "surname"=>"De Giorgi", "date_of_birth"=>"15-12-2004", "email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (3.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "surname", "username", "date_of_birth", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Lorenzo"], ["surname", "De Giorgi"], ["username", "Degio"], ["date_of_birth", "2004-12-15"], ["email", "[FILTERED]"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-24 08:36:20.493987"], ["updated_at", "2024-10-24 08:36:20.493987"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+Completed 200 OK in 258ms (Views: 1.5ms | ActiveRecord: 4.5ms (1 query, 0 cached) | GC: 0.9ms)
+
+
+Started POST "/api/v1/registration" for ::1 at 2024-10-24 10:36:44 +0200
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/registration"):
+  
+Started POST "/api/v1/register" for ::1 at 2024-10-24 10:36:50 +0200
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"Lorenzo", "username"=>"Degio", "surname"=>"De Giorgi", "date_of_birth"=>"15-12-2004", "email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (3.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "surname", "username", "date_of_birth", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Lorenzo"], ["surname", "De Giorgi"], ["username", "Degio"], ["date_of_birth", "2004-12-15"], ["email", "[FILTERED]"], ["password_digest", "[FILTERED]"], ["created_at", "2024-10-24 08:36:50.933945"], ["updated_at", "2024-10-24 08:36:50.933945"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+Completed 200 OK in 244ms (Views: 0.2ms | ActiveRecord: 4.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+

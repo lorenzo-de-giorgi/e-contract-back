@@ -21,6 +21,8 @@ gem "jbuilder"
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
+gem 'rack-cors'
+gem 'active_model_serializers'
 
 gem 'bundler', '>= 2.0'
 
