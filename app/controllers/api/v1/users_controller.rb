@@ -16,6 +16,17 @@ module Api
     
       def create
         @user = User.new(user_params)
+
+        if User.exists?(email: @user.email)
+          render json: { error: 'Email già utilizzata.' }, status: :unprocessable_entity
+          return
+        end
+
+        if User.exists?(username: @user.username)
+          render json: { error: 'Username già utilizzato.' }, status: :unprocessable_entity
+          return
+        end
+        
         if @user.save
           render json: 'Utente creato con successo.'
           return 
